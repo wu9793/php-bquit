@@ -1,7 +1,7 @@
 <?php
 
 include_once "db.php";
-dd($_POST);
+// dd($_POST);
 
 foreach ($_POST['id'] as $key => $id) {
 
@@ -10,7 +10,7 @@ foreach ($_POST['id'] as $key => $id) {
     } else {
         $row = $Title->find($id);
         $row['text'] = $_POST['text'][$key];
-        $row['view'] = ($id == $_POST['view']) ? 1 : 0;
+        $row['view'] = ($id == $_POST['view'])?1:0;
         $Title->save($row);
 
     }

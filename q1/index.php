@@ -20,11 +20,15 @@ include_once "db.php";
         </div>
     </div>
     <header class="container">
-        <img src="" alt="">
+        <?php
+        $img = $Title->find(['view' => 1]);
+        ?>
+        <img src="./img/<?= $img['img']; ?>" alt="">
     </header>
     <main class="container">
         <h3 class="text-center">網站標題管理</h3>
         <hr>
+        <form action="edit_title.php" method="post">
         <table class="table table-bordered text-center">
             <tr>
                 <td>網站標題</td>
@@ -35,16 +39,16 @@ include_once "db.php";
             </tr>
             <?php
             $rows = $Title->all();
-            foreach ($rows as $row){
+            foreach ($rows as $row) {
             ?>
-            <tr>
-                <td><img src="./img/<?=$row['img'];?>" style="width:300px;height:30px"></td>
-                <td><input type="text" name="text[]" id="" value="<?=$row['text'];?>" style="width: 90%;"></td>
-                <td><input type="radio" name="view" id="" value="<?=$row['id'];?>" <?=($row['view']==1)?'checked':'';?>></td>
-                <td><input type="checkbox" name="del[]" id="" value="<?=$row['id'];?>"></td>
-                <td><input class="btn btn-success" type="button" value="更新圖片"></td>
-                <input type="hidden" name="id[]" value="<?=$row['id'];?>">
-            </tr>
+                <tr>
+                    <td><img src="./img/<?= $row['img']; ?>" style="width:300px;height:30px"></td>
+                    <td><input type="text" name="text[]" id="" value="<?= $row['text']; ?>" style="width: 90%;"></td>
+                    <td><input type="radio" name="view" id="" value="<?= $row['id']; ?>" <?= ($row['view'] == 1) ? 'checked' : ''; ?>></td>
+                    <td><input type="checkbox" name="del[]" id="" value="<?= $row['id']; ?>"></td>
+                    <td><input class="btn btn-success" type="button" value="更新圖片"></td>
+                    <input type="hidden" name="id[]" value="<?= $row['id']; ?>">
+                </tr>
             <?php
             }
             ?>

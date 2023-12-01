@@ -54,10 +54,14 @@ include_once "./db.php";
                             <td><?= $idx + 1; ?></td>
                             <td><?= $que['text']; ?></td>
                             <td>
-                                <button class="btn btn-info">顯示</button>
-                                <button class="btn btn-info">編輯</button>
+                                <a href="./api/show.php?id=<?= $que['id']; ?>">
+                                    <button class="btn <?=($que['sh']==1)?'btn-outline-success':'btn-outline-secondary';?>">
+                                        <?=($que['sh']==1)?'顯示':'隱藏';?>
+                                    </button>
+                                </a>
+                                <button class="btn btn-outline-danger mx-2">編輯</button>
                                 <a href="./api/del.php?id=<?= $que['id']; ?>">
-                                    <button class="btn btn-info">刪除</button>
+                                    <button class="btn btn-outline-dark">刪除</button>
                                 </a>
                             </td>
                         </tr>

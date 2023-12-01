@@ -1,7 +1,7 @@
 <?php include_once "../db.php";
 
 $opt=$Que->find($_POST['opt']);
-$opt['count']=$opt['count'];
+$opt['count']=$opt['count']+1;
 
 $subject=$Que->find($opt['subject_id']);
 $subject['count']=$subject['count']+1;
